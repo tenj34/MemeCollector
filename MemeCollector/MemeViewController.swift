@@ -14,11 +14,16 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var titleTextField: UITextField!
     
     var imagePicker = UIImagePickerController()
+    var meme  : Meme? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-        // Do any additional setup after loading the view.
+        
+        if meme != nil {
+            memeImageView.image = UIImage(data : meme!.image as! Data)
+            titleTextField.text = meme!.title
+        }
     }
 
     @IBAction func photosTapped(_ sender: Any) {

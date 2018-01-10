@@ -48,5 +48,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.imageView?.image = UIImage(data : meme.image as! Data)
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let meme  = memes[indexPath.row]
+        performSegue(withIdentifier: "memeSegue", sender: meme)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nextVC = segue.destination as! MemeViewController
+        nextVC.meme = sender as? Meme
+    }
 }
 
