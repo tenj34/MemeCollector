@@ -10,6 +10,8 @@ import UIKit
 
 class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var addUpdateButton: UIButton!
     @IBOutlet weak var memeImageView: UIImageView!
     @IBOutlet weak var titleTextField: UITextField!
     
@@ -23,6 +25,11 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         if meme != nil {
             memeImageView.image = UIImage(data : meme!.image as! Data)
             titleTextField.text = meme!.title
+            
+            addUpdateButton.setTitle("Update", for: .normal)
+        }
+        else {
+            deleteButton.isHidden = true
         }
     }
 
@@ -41,11 +48,26 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     @IBAction func addTapped(_ sender: Any) {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let meme = Meme(context: context)
-        meme.title = titleTextField.text
-        meme.image = UIImagePNGRepresentation(memeImageView.image!)
         
+        if meme != nil {
+            meme!.title = titleTextField.text
+            meme!.image = UIImagePNGRepresentation(memeImageView.image!)
+        } else {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            
+            let meme = Meme(context: context)
+            meme.title = titleTextField.text
+            meme.image = UIImagePNGRepresentation(memeImageView.image!)
+            
+        }
+        
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        navigationController!.popViewController(animated: true)
+    }
+    @IBAction func deleteTapped(_ sender: Any) {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        context.delete(meme!)
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         navigationController!.popViewController(animated: true)
     }

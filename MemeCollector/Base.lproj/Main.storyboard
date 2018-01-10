@@ -72,22 +72,56 @@
                                 <rect key="frame" x="33" y="125" width="308" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="Gy6-19-8lp"/>
+                                    <constraint firstAttribute="width" constant="308" id="Gy6-19-8lp"/>
                                     <constraint firstAttribute="height" constant="150" id="RRV-Lw-UvD"/>
                                 </constraints>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Qfl-DM-6K7">
+                                <rect key="frame" x="172" y="380" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fUp-Rr-Rb0">
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aXJ-vj-zMC">
+                                                <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zHO-YI-MPO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="UMy-I0-QUh">
+                                                                <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hDu-pA-yXD">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
+                                                                        <state key="normal" title="Delete"/>
+                                                                        <connections>
+                                                                            <action selector="addTapped:" destination="Jdf-QX-UP9" eventType="touchUpInside" id="YuY-oF-V7x"/>
+                                                                            <action selector="deleteTapped:" destination="Jdf-QX-UP9" eventType="touchUpInside" id="tPv-Q1-Zh5"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YGr-Ek-YOd" firstAttribute="centerX" secondItem="Sh2-17-zfm" secondAttribute="centerX" id="06X-Xb-QIf"/>
                             <constraint firstItem="bxO-Xx-5zT" firstAttribute="centerX" secondItem="Sh2-17-zfm" secondAttribute="centerX" id="I8Q-aZ-Nlk"/>
-                            <constraint firstItem="bxO-Xx-5zT" firstAttribute="top" secondItem="YGr-Ek-YOd" secondAttribute="bottom" constant="20" id="IwA-29-WAr"/>
+                            <constraint firstItem="bxO-Xx-5zT" firstAttribute="top" secondItem="YGr-Ek-YOd" secondAttribute="bottom" constant="9" id="IwA-29-WAr"/>
                             <constraint firstItem="YGr-Ek-YOd" firstAttribute="centerX" secondItem="Sh2-17-zfm" secondAttribute="centerX" id="UJV-mg-uj5"/>
                             <constraint firstItem="ySE-76-RCC" firstAttribute="trailing" secondItem="vbr-v7-abN" secondAttribute="trailing" constant="34" id="VAb-ta-UcD"/>
                             <constraint firstItem="vbr-v7-abN" firstAttribute="top" secondItem="ySE-76-RCC" secondAttribute="top" constant="61" id="ZtA-Fq-eti"/>
                             <constraint firstItem="vbr-v7-abN" firstAttribute="leading" secondItem="ySE-76-RCC" secondAttribute="leading" constant="33" id="kKM-m5-lfK"/>
                             <constraint firstItem="vbr-v7-abN" firstAttribute="top" secondItem="ySE-76-RCC" secondAttribute="top" constant="61" id="kPp-Ds-VbZ"/>
-                            <constraint firstItem="YGr-Ek-YOd" firstAttribute="top" secondItem="vbr-v7-abN" secondAttribute="bottom" constant="20" id="pKx-9L-THs"/>
+                            <constraint firstItem="YGr-Ek-YOd" firstAttribute="top" secondItem="vbr-v7-abN" secondAttribute="bottom" constant="31" id="pKx-9L-THs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ySE-76-RCC"/>
                     </view>
@@ -106,6 +140,8 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="addUpdateButton" destination="bxO-Xx-5zT" id="FX1-hJ-GZS"/>
+                        <outlet property="deleteButton" destination="hDu-pA-yXD" id="svi-14-J07"/>
                         <outlet property="memeImageView" destination="vbr-v7-abN" id="e34-Wj-z5B"/>
                         <outlet property="titleTextField" destination="YGr-Ek-YOd" id="IGk-b8-SGm"/>
                     </connections>
